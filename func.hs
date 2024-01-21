@@ -17,10 +17,17 @@
 -- não definimos ou mudamos valores (imutabilidade).
 
 -- funções puras retornam sempre o mesmo
--- resultado para a mesma entrada.
+-- resultado para a mesma entrada (DETERMINISMO).
 -- (dominio[entradas]) (contraDominio imagem[saídas] )
 
--- enfoque em expressões e não em comandos, etapas.
+-- DECLARATIVO/imperativo
+
+-- chamadas de funções Haskell/C
+-- g h (f 1)    = g(h,f(1))
+-- g (h (f 1))  = g(h(f(1)))
+-- a x + b x    = a(x) + b(x)
+-- f (a + g b)  = f(a+g(b))
+
 
 quadrado :: Int -> Int
 quadrado x = x*x
@@ -44,5 +51,23 @@ hipotenusa cata catb = sqrt (cata*cata + catb*catb)
 diffRaio :: Float -> Float -> Float
 diffRaio ra rb = (areaCirculo ra) - (areaCirculo rb)
 
+--retorna uma string com sub string repetida
+repetirString :: String -> Int -> String
+repetirString s i =
+  if length s == 0
+  then s
+  else
+    if i /= 0
+    then s ++ repetirString s (i-1)
+    else s
 
+--A mesma função anterior com dupla recurção
+perigo :: String -> Int -> String
+perigo s i =
+  if length s == 0
+  then s
+  else
+    if i /= 0
+    then s ++ perigo s (i-1) ++ perigo s (i-1)
+    else s
 

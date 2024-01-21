@@ -54,5 +54,15 @@ flutuabilidadeHidrogenio p = p * forcaAscencionalH
   where
     forcaAscencionalH = 1.2 --kg/m³ forca Ascencional do Hidrogênio.
 
+altoBaixo :: Float -> String
+altoBaixo alt
+  | alt > 1.80 = alto
+  | alt <= 0   = anomalia
+  | otherwise  = baix
+  where
+    alto = "Pessoa Alta"
+    baix = "Toco de cachorro cagar em cima"
+    anomalia = "Criatura anomala identificada"
+
 -- vide ./locl.hs para ver a diferença entre where .. e let .. in ..
 
