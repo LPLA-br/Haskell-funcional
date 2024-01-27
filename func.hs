@@ -28,6 +28,7 @@
 -- a x + b x    = a(x) + b(x)
 -- f (a + g b)  = f(a+g(b))
 
+dobra x = x*x
 
 quadrado :: Int -> Int
 quadrado x = x*x
