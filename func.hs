@@ -28,7 +28,9 @@
 -- a x + b x    = a(x) + b(x)
 -- f (a + g b)  = f(a+g(b))
 
-dobra x = x*x
+-- :: pode ser lido como "tem tipo"
+
+--FUNÇÕES
 
 quadrado :: Int -> Int
 quadrado x = x*x
@@ -37,8 +39,8 @@ cubo :: Int -> Int
 cubo x = x*x*x
 
 -- in,in,out
-soma :: Float -> Float -> Float
-soma a b = a+b
+soma2 :: Float -> Float -> Float
+soma2 a b = a+b
 
 triplica :: Int -> Int
 triplica x = x*3
@@ -72,3 +74,56 @@ perigo s i =
     then s ++ perigo s (i-1) ++ perigo s (i-1)
     else s
 
+-- ABSTRAÇÕES LAMBDA (FUNÇÕES "ANÔNIMAS")
+dobra x = x*x
+incremento x = x+1
+soma a b = a + b
+fatorial x = x + fatorial x-1
+-- encurtando o máximo possível !!!
+dobra2 = \x -> x*x
+subracao = \x y -> x-y
+
+-- OPERADORES INFIXOS ( A FUNCAOOPERADORIFORME B )
+-- Gramática: prefixo-radical-infixo-sufixo
+-- operando operador←(infixo) operando
+
+--exemplo da definição do operador de concatenação de listas:
+-- (++) :: [a] -> [a] -> [a]
+-- []          ++ b           = b
+-- (head:tail) ++ b           = head : (tail++b)
+
+-- novo operador maluco de concatenação.
+(<><>) :: [a] -> [a] -> [a]
+[]          <><> b           = b
+(head:tail) <><> b           = head : (tail <><> b) --recurção implícita
+
+-- novo operador maluco de soma dobrada
+(+&+) :: Int -> Int -> Int
+a +&+ b = (a+b)*2
+
+-- operador maluco de composições de funções.
+-- atenção: 'b' retorna 'c' e 'a' chama 'b'
+-- logo (...) retorna função onde 'a' fará sua ação
+-- e passará o resultado para b.
+-- RETORNA: função aplicavel à identificador
+(...) :: (b->c) -> (a->b) -> (a->c)
+alpha ... beta = \ x -> alpha (beta x)
+
+-- --exemplos de uso do compositor:
+-- x = dobra ... dobra
+-- x 10
+-- 1000
+--
+-- k = incremento ... dobra
+-- k 10
+-- 101
+-- --k equivale a: incremento(dobra(10))
+--
+-- k = dobra ... incremento
+-- k 10
+-- 121
+-- --k equivale a: dobra(incremento(10))
+-- 
+-- ← composição resolve-se da direita para esquerda ! ←
+
+-- operador padrão de composição de funções em Haskell é . (ponto final)

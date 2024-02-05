@@ -3,8 +3,9 @@
 -- ("Luiz",1950) --pode ter tipos diferentes.
 -- (1950,"Luiz") não é igual à tupla expressa acima
 -- A ordem importa !
--- tuplas de dois elementos são chamados par.
--- fst e snd acessam, respectivamente o primeiro e último.
+-- tuplas de dois elementos são chamados par e duas funções
+-- padrão lhe são úteis:
+-- fst e snd acessam, respectivamente o primeiro e último do par.
 
 --type Aluno = (String, Int) -- (Nome, nota)
 

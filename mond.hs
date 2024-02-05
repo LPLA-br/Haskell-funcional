@@ -16,6 +16,7 @@
 -- esquerda e o operador >>= sequencia e chama a função à direita
 -- passando o conteúdo do monad e exige que outro monad seja
 -- retornado para poder continuar compondo.
+-- do ...
 
 main :: IO ()
 main = putStr "Qual o teu nome filho ? "
